@@ -1,0 +1,189 @@
+/* ==========================================================
+   ERA SELECTION PORTAL — Time Hub UI
+   Applies ONLY to index.html
+   ========================================================== */
+
+body {
+    background: radial-gradient(circle at 50% 20%,
+        #08111a,
+        #04080f,
+        #02050a
+    );
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+/* ==========================================================
+   PORTAL GLOW GRID BACKGROUND
+   ========================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        /* glowing grid */
+        linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+        /* soft gradient backdrop */
+        radial-gradient(circle at top, #0c2333 0%, #030914 80%, #01030a 100%);
+
+    background-size:
+        50px 50px,
+        50px 50px,
+        100% 100%;
+
+    z-index: -2;
+    opacity: 0.35;
+
+    animation: portalGridMove 22s linear infinite;
+}
+
+@keyframes portalGridMove {
+    0% { background-position: 0 0, 0 0, center; }
+    100% { background-position: 0 400px, 400px 0, center; }
+}
+
+
+
+/* ==========================================================
+   FLOATING PORTAL RINGS
+   ========================================================== */
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 550px;
+    height: 550px;
+    left: 50%;
+    top: 40%;
+
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+
+    background: radial-gradient(circle,
+        rgba(0, 247, 255, 0.15),
+        rgba(0, 247, 255, 0.05),
+        transparent 60%
+    );
+
+    filter: blur(18px);
+    z-index: -1;
+
+    animation: ringPulse 6s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.45; }
+    50% { transform: translate(-50%, -50%) scale(1.18); opacity: 0.65; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.45; }
+}
+
+
+
+/* ==========================================================
+   PORTAL TITLE + SUBTITLE
+   ========================================================== */
+
+.portal-title {
+    font-size: 3.2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #e2f3ff;
+
+    text-shadow:
+        0 0 8px rgba(0,255,255,0.45),
+        0 0 16px rgba(0,255,255,0.25);
+}
+
+.portal-subtitle {
+    color: #8fb4c9;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+
+
+/* ==========================================================
+   ERA CARDS — Enhanced Portal Effects
+   ========================================================== */
+
+.era-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(0,255,255,0.2);
+    backdrop-filter: blur(10px);
+
+    transition: 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Portal light flash on hover */
+.era-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle,
+        rgba(0,255,255,0.18),
+        rgba(0,255,255,0.05),
+        transparent 70%
+    );
+    opacity: 0;
+    transform: scale(0.6);
+    transition: 0.4s ease;
+}
+
+.era-card:hover::before {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+/* Hover lift */
+.era-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow:
+        0 0 20px rgba(0,255,255,0.25),
+        0 0 40px rgba(0,255,255,0.15);
+}
+
+
+
+/* ==========================================================
+   ERA CARD TEXT
+   ========================================================== */
+
+.era-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e6faff;
+}
+
+.era-desc {
+    color: #a8cbde;
+}
+
+
+
+/* ==========================================================
+   ENTRY ANIMATION FOR CARDS
+   ========================================================== */
+
+.era-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardEntrance 0.8s ease forwards;
+}
+
+.era-card:nth-child(2) { animation-delay: 0.1s; }
+.era-card:nth-child(3) { animation-delay: 0.2s; }
+.era-card:nth-child(4) { animation-delay: 0.3s; }
+.era-card:nth-child(5) { animation-delay: 0.4s; }
+
+@keyframes cardEntrance {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,135 @@
+/* ==========================================================
+   STONE AGE THEME — Typography & Base Styles
+   ========================================================== */
+
+body {
+    font-family: "IM Fell English SC", serif;
+    color: #f1e3c6;
+    background: #1a140f;
+}
+
+.page-title, .card h2 {
+    font-family: "Caesar Dressing", serif;
+    letter-spacing: 2px;
+    color: #f7ddb1;
+}
+
+.page-desc {
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+
+
+
+/* ==========================================================
+   STONE AGE BACKGROUND FX — drifting dust
+   ========================================================== */
+
+.fx-layer {
+    background:
+        radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%),
+        radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    animation: stoneDust 15s linear infinite;
+}
+
+@keyframes stoneDust {
+    0%   { background-position: 0% 0%, 20% 30%; }
+    100% { background-position: 100% 120%, 80% 90%; }
+}
+
+
+
+
+/* ==========================================================
+   STONE AGE 3D OBJECT — Floating Stone Shard
+   ========================================================== */
+
+.object-layer::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: url('https://i.imgur.com/ZpVdNxm.png') center/cover;
+    opacity: 0.18;
+
+    top: 22%;
+    left: 10%;
+
+    transform-style: preserve-3d;
+    animation: stoneFloat 12s linear infinite;
+}
+
+@keyframes stoneFloat {
+    0%   { transform: rotateX(0deg) rotateY(0deg) translateZ(0); }
+    100% { transform: rotateX(360deg) rotateY(360deg) translateZ(40px); }
+}
+
+
+
+
+/* ==========================================================
+   INTERACTION — Cracked Stone Ripple + Impact Shake
+   ========================================================== */
+
+.card-ripple {
+    background: radial-gradient(
+        circle,
+        rgba(245, 208, 132, 0.35),
+        rgba(131, 84, 41, 0.10),
+        transparent 70%
+    );
+    filter: blur(6px);
+}
+
+/* Cracked stone vibration on hover */
+.card:hover {
+    animation: stoneImpact 0.35s ease;
+}
+
+@keyframes stoneImpact {
+    0%   { transform: translateY(-3px) rotate(0deg); }
+    50%  { transform: translateY(2px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+
+
+
+/* ==========================================================
+   CARD GLOW (STONE ERA)
+   ========================================================== */
+
+.card:hover {
+    box-shadow:
+        0 12px 30px rgba(248, 189, 118, 0.25),
+        inset 0 0 18px rgba(148, 99, 44, 0.35);
+}
+
+
+
+
+/* ==========================================================
+   ARRIVAL CINEMATIC — Dust Storm Fade
+   ========================================================== */
+
+.arrival-layer {
+    background:
+        radial-gradient(circle, rgba(245, 208, 132, 0.3), transparent 70%),
+        url('https://i.imgur.com/zQZSWrt.jpeg') center/cover;
+    animation: stoneArrival 1.2s ease-out forwards;
+}
+
+@keyframes stoneArrival {
+    0% {
+        filter: blur(12px) brightness(0.5);
+        opacity: 1;
+    }
+    60% {
+        filter: blur(4px) brightness(0.9);
+    }
+    100% {
+        filter: blur(0px) brightness(1);
+        opacity: 0;
+    }
+}

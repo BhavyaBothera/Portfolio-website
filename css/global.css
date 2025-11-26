@@ -1,0 +1,384 @@
+/* ==========================================================
+   GLOBAL BASE — RESET + ROOT VARIABLES
+   ========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Main layout container for era pages */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+/* ==========================================================
+   PORTAL SELECTOR PAGE (index.html)
+   ========================================================== */
+
+.portal-container {
+    min-height: 100vh;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.portal-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.portal-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+.portal-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    padding: 20px;
+}
+
+.era-card {
+    padding: 28px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    transition: 0.4s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.era-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.12);
+}
+
+.era-label {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.era-desc {
+    font-size: 0.95rem;
+    opacity: 0.7;
+}
+
+
+
+
+/* ==========================================================
+   UNIVERSAL CARD STYLING
+   ========================================================== */
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 26px;
+    position: relative;
+    overflow: hidden;
+
+    /* Fade-in on load */
+    opacity: 0;
+    transform: translateY(16px);
+    animation: cardFadeIn 0.9s ease forwards;
+
+    /* Breathing shadow */
+    animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes cardFadeIn {
+    0% { opacity: 0; transform: translateY(16px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+    0%   { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    50%  { box-shadow: 0 8px 26px rgba(0,0,0,0.22); }
+    100% { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+}
+
+/* Hover micro-interaction */
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    transition: 0.35s ease;
+}
+
+.card > * {
+    transition: transform 0.3s ease;
+}
+
+.card:hover > * {
+    transform: translateY(-3px);
+}
+
+
+
+
+/* ==========================================================
+   UNIVERSAL CARD RIPPLE EFFECT (interactive.js)
+   ========================================================== */
+
+.card-ripple {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.45s ease, opacity 0.45s ease;
+}
+
+.card-ripple.active {
+    transform: translate(-50%, -50%) scale(1.9);
+    opacity: 1;
+}
+
+
+
+
+/* ==========================================================
+   MODE SYSTEM (CALM / CINEMATIC / EXTREME / MINIMAL)
+   ========================================================== */
+
+/* Calm Mode */
+.mode-calm .card {
+    animation: none !important;
+}
+.mode-calm .fx-layer,
+.mode-calm .object-layer {
+    opacity: 0.45 !important;
+}
+
+/* Extreme FX Mode */
+.mode-extreme .card {
+    transform: scale(1.05);
+}
+.mode-extreme .fx-layer,
+.mode-extreme .object-layer {
+    opacity: 1 !important;
+}
+
+/* Minimal Mode */
+.mode-minimal .card,
+.mode-minimal .fx-layer,
+.mode-minimal .object-layer {
+    animation: none !important;
+}
+.mode-minimal .card:hover {
+    transform: none !important;
+}
+
+
+
+
+/* ==========================================================
+   MODE SELECTOR UI
+   ========================================================== */
+
+.mode-selector {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 20000;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.mode-selector select {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+
+
+
+
+/* ==========================================================
+   STORY MESSAGE OVERLAY (story.js)
+   ========================================================== */
+
+.story-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 16px;
+
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+
+    z-index: 900000;
+}
+
+.story-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+/* ==========================================================
+   EFFECT LAYERS (Background FX + 3D Objects)
+   ========================================================== */
+
+.fx-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.object-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    perspective: 1200px;
+}
+
+
+
+
+/* ==========================================================
+   ARRIVAL CINEMATIC BASE LAYER
+   ========================================================== */
+
+.arrival-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 200000;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+.arrival-hide {
+    opacity: 0;
+}
+
+
+
+
+/* ==========================================================
+   BACK BUTTON FOR ERA PAGES
+   ========================================================== */
+
+.back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+    z-index: 999999;
+}
+
+.back-link:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.18);
+}
+
+/* ============================================================
+   FIX: OVERRIDE GLOBAL .card FOR PROJECT SECTION
+   ============================================================ */
+
+.section-projects .card {
+    all: unset;              /* remove global styles */
+    display: block;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    width: 100%;
+    height: 340px;
+}
+
+.section-projects .card * {
+    all: revert-layer;       /* restore normal element styling */
+}
+
+/* Restore flipping card layout after reset */
+.section-projects .card-flipper {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(.25,.46,.45,.94);
+}
+
+.section-projects .card:hover .card-flipper {
+    transform: rotateY(180deg);
+}
+
+.section-projects .card-front,
+.section-projects .card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(8px) saturate(1.4);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+    backface-visibility: hidden;
+}
+
+.section-projects .card-back {
+    transform: rotateY(180deg);
+}
+
+.neon-chase-wrap {
+    z-index: 2 !important;
+}
+.neon-chase-wrap .card {
+    z-index: 10 !important;
+}
+.neon-strip {
+    z-index: 1 !important;
+}

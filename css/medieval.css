@@ -1,0 +1,150 @@
+/* ==========================================================
+   MEDIEVAL THEME — Typography & Base UI
+   ========================================================== */
+
+body {
+    font-family: "Playfair Display", serif;
+    background: #2c1f15;
+    color: #f8e7c0;
+}
+
+.page-title, .card h2 {
+    font-family: "MedievalSharp", serif;
+    color: #f6d68b;
+    letter-spacing: 1px;
+}
+
+.page-desc {
+    opacity: 0.75;
+}
+
+
+
+
+/* ==========================================================
+   AMBIENT FX — Candle Glow + Floating Embers
+   ========================================================== */
+
+.fx-layer {
+    background: radial-gradient(circle at 50% 80%,
+            rgba(255,200,120,0.35) 0%,
+            transparent 60%
+        );
+    animation: candleGlow 4s ease-in-out infinite;
+}
+
+@keyframes candleGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+}
+
+/* floating ash / embers */
+.fx-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(255,220,160,0.4) 0%, transparent 50%),
+        radial-gradient(circle, rgba(255,220,160,0.25) 0%, transparent 60%);
+    background-size: 20px 20px, 14px 14px;
+    animation: embers 12s linear infinite;
+}
+
+@keyframes embers {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-80px); }
+}
+
+
+
+
+/* ==========================================================
+   FLOATING 3D OBJECT — Medieval Scroll
+   ========================================================== */
+
+.object-layer::before {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 160px;
+
+    background: url('https://i.imgur.com/KMO1ArV.png') center/cover;
+    opacity: 0.25;
+
+    top: 15%;
+    right: 8%;
+
+    transform-origin: center;
+    transform-style: preserve-3d;
+
+    animation: scrollFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes scrollFloat {
+    0% {
+        transform: rotateY(0deg) rotateX(10deg) translateZ(0px);
+        opacity: 0.2;
+    }
+    100% {
+        transform: rotateY(25deg) rotateX(-12deg) translateZ(35px);
+        opacity: 0.28;
+    }
+}
+
+
+
+
+/* ==========================================================
+   INTERACTION — Ink Bleed Ripple + Scroll Tilt
+   ========================================================== */
+
+.card-ripple {
+    background: radial-gradient(
+        circle,
+        rgba(120, 64, 30, 0.45),
+        rgba(80, 48, 20, 0.15),
+        transparent 70%
+    );
+    filter: blur(4px);
+}
+
+/* scroll-like tilt */
+.card:hover {
+    transform: scale(1.02) rotate(-0.8deg);
+}
+
+
+
+
+/* ==========================================================
+   CARD GLOW — Warm Manuscript Glow
+   ========================================================== */
+
+.card:hover {
+    box-shadow:
+        0 12px 30px rgba(234,179,8,0.28),
+        inset 0 0 16px rgba(202,138,4,0.35);
+}
+
+
+
+
+/* ==========================================================
+   ARRIVAL CINEMATIC — Candle Burst Fade
+   ========================================================== */
+
+.arrival-layer {
+    background:
+        radial-gradient(circle at center,
+            rgba(255,200,120,0.45),
+            rgba(180,120,40,0.25),
+            transparent 70%
+        );
+    animation: medievalArrival 1s ease-out forwards;
+}
+
+@keyframes medievalArrival {
+    0%   { opacity: 1; filter: blur(12px) brightness(0.4); }
+    50%  { opacity: 1; filter: blur(4px) brightness(1.2); }
+    100% { opacity: 0; filter: blur(0px) brightness(1); }
+}
