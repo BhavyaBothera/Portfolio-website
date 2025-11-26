@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Era — Time Machine Portfolio</title>
+
+    <!-- GLOBAL + ERA CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/medieval.css">
+
+    <!-- Medieval Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Background FX (candle flicker + embers) -->
+    <div class="fx-layer"></div>
+
+    <!-- Floating medieval scroll -->
+    <div class="object-layer"></div>
+
+    <!-- Cinematic arrival layer -->
+    <div class="arrival-layer"></div>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+        <select id="modeSelect">
+            <option value="cinematic">Cinematic Mode</option>
+            <option value="calm">Calm Mode</option>
+            <option value="extreme">Extreme FX</option>
+            <option value="minimal">Minimal Mode</option>
+        </select>
+    </div>
+
+    <!-- Back -->
+    <a href="index.html" class="back-link">← Back</a>
+
+    <!-- Story messages -->
+    <div class="story-overlay"></div>
+
+    <!-- ==========================
+         PAGE CONTENT
+         ========================== -->
+    <div class="container">
+
+        <h1 class="page-title">🏰 Medieval Kingdom</h1>
+        <p class="page-desc">
+            Enter the age of scrolls, ink, candlelight and royal manuscripts.
+        </p>
+
+        <!-- ABOUT -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>
+                A wandering artisan crafting interfaces across kingdoms and eras.
+                In this realm, design is written in ink and sealed with wax.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card">
+            <h2>Skills</h2>
+            <ul>
+                <li>Scroll UI Layout</li>
+                <li>Candlelight Aesthetics</li>
+                <li>Royal Typography</li>
+            </ul>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card">
+            <h2>Projects</h2>
+            <p>
+                Manuscripts, heraldry systems, scroll-based data records,
+                and enchanted UI layouts.
+            </p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="card">
+            <h2>Contact</h2>
+            <p>
+                Send word via raven or seal your message in wax and parchment.
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/story.js"></script>
+    <script src="js/mode.js"></script>
+    <script src="js/interactive.js"></script>
+
+    <script>
+        // arrival narrative + fade layer
+        window.addEventListener("load", () => {
+            showStoryMessage("Medieval Kingdom Loaded.");
+
+            setTimeout(() => {
+                document.querySelector(".arrival-layer")?.classList.add("arrival-hide");
+            }, 250);
+        });
+    </script>
+
+</body>
+</html>

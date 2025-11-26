@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Age Era — Time Machine Portfolio</title>
+
+    <!-- GLOBAL + ERA CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/stone.css">
+
+    <!-- Stone Age Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background FX -->
+    <div class="fx-layer"></div>
+
+    <!-- 3D Objects -->
+    <div class="object-layer"></div>
+
+    <!-- Arrival Cinematic -->
+    <div class="arrival-layer"></div>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+        <select id="modeSelect">
+            <option value="cinematic">Cinematic Mode</option>
+            <option value="calm">Calm Mode</option>
+            <option value="extreme">Extreme FX</option>
+            <option value="minimal">Minimal Mode</option>
+        </select>
+    </div>
+
+    <!-- Back to Portal -->
+    <a href="index.html" class="back-link">← Back</a>
+
+    <!-- STORY MESSAGE LAYER -->
+    <div class="story-overlay"></div>
+
+    <!-- PAGE CONTENT -->
+    <div class="container">
+
+        <h1 class="page-title">🪨 Stone Age Realm</h1>
+        <p class="page-desc">
+            Welcome to the primitive age of design.  
+            Rugged textures. Carved UI. Ancient vibes.
+        </p>
+
+        <!-- ABOUT -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>
+                I am a creative developer exploring UI design across time.  
+                In this era, everything is carved into stone.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card">
+            <h2>Skills</h2>
+            <ul>
+                <li>Front-end Carving</li>
+                <li>Ancient UX Architecture</li>
+                <li>Primitive UI Layouting</li>
+            </ul>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card">
+            <h2>Projects</h2>
+            <p>Even in the Stone Age, innovation thrives.</p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="card">
+            <h2>Contact</h2>
+            <p>Send a message via smoke signals or engraved stones.</p>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="js/story.js"></script>
+    <script src="js/mode.js"></script>
+    <script src="js/interactive.js"></script>
+
+    <script>
+        // Page entry message
+        window.addEventListener("load", () => {
+            showStoryMessage("Stone Age Environment Ready.");
+
+            setTimeout(() => {
+                document.querySelector(".arrival-layer")?.classList.add("arrival-hide");
+            }, 250);
+        });
+    </script>
+
+</body>
+</html>

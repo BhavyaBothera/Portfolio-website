@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Minimal — Time Machine Portfolio</title>
+
+    <!-- Global + Modern CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/modern.css">
+
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Ambient FX -->
+    <div class="fx-layer"></div>
+
+    <!-- 3D floating glass panels -->
+    <div class="object-layer"></div>
+
+    <!-- Arrival animation -->
+    <div class="arrival-layer"></div>
+
+    <!-- Mode selector -->
+    <div class="mode-selector">
+        <select id="modeSelect">
+            <option value="cinematic">Cinematic Mode</option>
+            <option value="calm">Calm Mode</option>
+            <option value="extreme">Extreme FX</option>
+            <option value="minimal">Minimal Mode</option>
+        </select>
+    </div>
+
+    <!-- Back -->
+    <a href="index.html" class="back-link">← Back</a>
+
+    <!-- Story overlay -->
+    <div class="story-overlay"></div>
+
+    <!-- ==========================
+         MAIN CONTENT
+         ========================== -->
+    <div class="container">
+
+        <h1 class="page-title">⚪ Modern Minimal</h1>
+        <p class="page-desc">
+            Clean, elegant, white-space-driven design inspired by Apple & Google.
+        </p>
+
+        <!-- ABOUT -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>
+                I craft clean and minimal UI experiences with a strong focus on clarity,
+                soft shadows, and structured content hierarchy.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card">
+            <h2>Skills</h2>
+            <ul>
+                <li>UX Design</li>
+                <li>Modern UI Styling</li>
+                <li>Shadows & Micro-interactions</li>
+            </ul>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card">
+            <h2>Projects</h2>
+            <p>
+                Smooth dashboards, minimal landing pages, clean mobile designs.
+            </p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="card">
+            <h2>Contact</h2>
+            <p>
+                Reach me via modern communication standards — email or DM.
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/story.js"></script>
+    <script src="js/mode.js"></script>
+    <script src="js/interactive.js"></script>
+
+    <script>
+        // Arrival cinematic & message
+        window.addEventListener("load", () => {
+            showStoryMessage("Modern Environment Loaded.");
+
+            setTimeout(() => {
+                document.querySelector(".arrival-layer")?.classList.add("arrival-hide");
+            }, 250);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro 80s Era — Time Machine Portfolio</title>
+
+    <!-- Global + Retro CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/retro.css">
+
+    <!-- Retro Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Unica+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Ambient FX -->
+    <div class="fx-layer"></div>
+
+    <!-- Wireframe objects -->
+    <div class="object-layer"></div>
+
+    <!-- Arrival cinematic -->
+    <div class="arrival-layer"></div>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector">
+        <select id="modeSelect">
+            <option value="cinematic">Cinematic Mode</option>
+            <option value="calm">Calm Mode</option>
+            <option value="extreme">Extreme FX</option>
+            <option value="minimal">Minimal Mode</option>
+        </select>
+    </div>
+
+    <!-- Back button -->
+    <a href="index.html" class="back-link">← Back</a>
+
+    <!-- Story overlay -->
+    <div class="story-overlay"></div>
+
+    <!-- ==========================
+         PAGE CONTENT
+         ========================== -->
+    <div class="container">
+
+        <h1 class="page-title">💜 Retro Neon Universe</h1>
+        <p class="page-desc">
+            Welcome to the synthwave dimension of neon lights,
+            grids, and electric VHS vibes.
+        </p>
+
+        <!-- ABOUT -->
+        <div class="card">
+            <h2>About Me</h2>
+            <p>
+                A digital artist navigating neon highways of the 80s UI timeline.
+                Here, everything glows.
+            </p>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="card">
+            <h2>Skills</h2>
+            <ul>
+                <li>VHS UI Design</li>
+                <li>Synthwave Visual Aesthetics</li>
+                <li>Glitch Animation Engineering</li>
+            </ul>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="card">
+            <h2>Projects</h2>
+            <p>Neon dashboards, grid worlds, vaporwave experiences.</p>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="card">
+            <h2>Contact</h2>
+            <p>Send a message through neon wavelengths or retro frequencies.</p>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/story.js"></script>
+    <script src="js/mode.js"></script>
+    <script src="js/interactive.js"></script>
+
+    <script>
+        window.addEventListener("load", () => {
+            showStoryMessage("Neon Systems Activated.");
+
+            setTimeout(() => {
+                document.querySelector(".arrival-layer")?.classList.add("arrival-hide");
+            }, 250);
+        });
+    </script>
+
+</body>
+</html>
